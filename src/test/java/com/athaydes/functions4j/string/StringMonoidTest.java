@@ -19,4 +19,5 @@ public class StringMonoidTest extends MonoidTest<String> {
     protected String randomSample() {
         return UUID.randomUUID().toString();
     }
+
 }

@@ -1,6 +1,6 @@
 package com.athaydes.functions4j;
 
-import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * @author Renato
@@ -11,8 +11,8 @@ public interface Monoid<M> {
 
     public M identity();
 
-    default M append( Collection<M> ms ) {
-        return ms.stream().reduce( identity(), this::operator );
+    default M applyOn( Stream<M> ms ) {
+        return ms.reduce( identity(), this::operator );
     }
 
 }

@@ -6,6 +6,8 @@ import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.stream.Stream;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -42,6 +44,24 @@ public abstract class MonoidTest<M> {
         M c = randomSample();
         assertThat( monoid().operator( monoid().operator( a, b ), c ),
                 is( monoid().operator( a, monoid().operator( b, c ) ) ) );
+    }
+
+    @Test
+    @Repeating( repetition = 100 )
+    public void applyOnTest() {
+        testCount++;
+        M a = randomSample();
+        M b = randomSample();
+        M c = randomSample();
+        M result = monoid().applyOn( Stream.of( a, b, c ) );
+        assertThat( result, is( monoid().operator( monoid().operator( a, b ), c ) ) );
+    }
+
+    @Test
+    public void applyOnTestWithEmptyStream() {
+        testCount++;
+        M result = monoid().applyOn( Stream.<M>empty() );
+        assertThat( result, is( monoid().identity() ) );
     }
 
     @AfterClass
