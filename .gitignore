@@ -3,6 +3,9 @@ out/
 target/
 build/
 .gradle/
+gradle/
 
+gradlew
+gradlew.bat
 *.iml
 *.class
