@@ -16,7 +16,7 @@ public class StringMonoidTest extends MonoidTest<String> {
     }
 
     @Override
-    protected String randomSample() {
+    public String randomSample() {
         return UUID.randomUUID().toString();
     }
 
