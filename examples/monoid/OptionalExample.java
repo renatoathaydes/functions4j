@@ -2,7 +2,6 @@ package monoid;
 
 import com.athaydes.functions4j.monoid.AddMonoid;
 import com.athaydes.functions4j.monoid.OptionalMonoid;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
