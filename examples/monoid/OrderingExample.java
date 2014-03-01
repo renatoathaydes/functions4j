@@ -51,7 +51,8 @@ public class OrderingExample {
         people.sort( ( p1, p2 ) -> orderingM.applyOn( Stream.of(
                 asOrdering( p1.fname, p2.fname ),
                 asOrdering( p1.lname, p2.lname ),
-                asOrdering( p1.age, p2.age )
+                asOrdering( p1.age, p2.age ),
+                asOrdering( p1.id, p2.id )
         ) ).intValue );
 
         assertEquals( people.toString(),
