@@ -45,7 +45,7 @@ public class OptionalExample {
                 new Person( "Hans", null ) );
 
         int sumOfKnownAges = optionalMonoid.applyOn(
-                people.stream().map( ( p ) -> p.age ) ).get().intValue();
+                people.stream().map( ( p ) -> p.age ) ).get();
 
         assertEquals( sumOfKnownAges, 30 + 25 + 20 );
     }
