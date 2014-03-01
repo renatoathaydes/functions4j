@@ -44,9 +44,22 @@ public class OptionalExample {
                 new Person( "Hans", null ) );
 
         int sumOfKnownAges = optionalMonoid.applyOn(
-                people.stream().map( ( p ) -> p.age ) ).get();
+                people.stream().map( ( p ) -> p.age ) ).orElse( 0 );
 
         assertEquals( sumOfKnownAges, 30 + 25 + 20 );
+    }
+
+    @Test
+    public void evenWhenAllValuesAreNullTheMonoidWillWork() {
+        List<Person> people = Arrays.asList(
+                new Person( "John", null ),
+                new Person( "Julia", null ),
+                new Person( "Hans", null ) );
+
+        int sumOfKnownAges = optionalMonoid.applyOn(
+                people.stream().map( ( p ) -> p.age ) ).orElse( 0 );
+
+        assertEquals( sumOfKnownAges, 0 );
     }
 
 }
