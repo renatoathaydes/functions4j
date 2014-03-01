@@ -1,7 +1,6 @@
 package com.athaydes.functions4j.monoid;
 
 import java.util.Collection;
-import java.util.Random;
 
 import static com.athaydes.functions4j.Functions.generate;
 import static java.util.Arrays.asList;
@@ -12,7 +11,6 @@ import static java.util.Arrays.asList;
 public class CollectionMonoidTest extends MonoidTest<Collection<String>> {
 
     StringMonoidTest stringMonoidTest = new StringMonoidTest();
-    Random rand = new Random();
 
     @Override
     protected Monoid<Collection<String>> monoid() {

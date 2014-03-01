@@ -1,12 +1,12 @@
 package com.athaydes.functions4j.monoid;
 
-import com.athaydes.functions4j.monoid.Monoid;
 import com.google.code.tempusfugit.concurrency.RepeatingRule;
 import com.google.code.tempusfugit.concurrency.annotations.Repeating;
 import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Random;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -20,6 +20,7 @@ public abstract class MonoidTest<M> {
     @Rule
     public RepeatingRule rule = new RepeatingRule();
 
+    Random rand = new Random();
 
     protected abstract Monoid<M> monoid();
 
@@ -28,7 +29,7 @@ public abstract class MonoidTest<M> {
     private static int testCount = 0;
 
     @Test
-    @Repeating( repetition = 1_000 )
+    @Repeating(repetition = 1_000)
     public void identityLaw() {
         testCount++;
         M sample = randomSample();
@@ -37,7 +38,7 @@ public abstract class MonoidTest<M> {
     }
 
     @Test
-    @Repeating( repetition = 1_000 )
+    @Repeating(repetition = 1_000)
     public void associativeLaw() {
         testCount++;
         M a = randomSample();
@@ -48,7 +49,7 @@ public abstract class MonoidTest<M> {
     }
 
     @Test
-    @Repeating( repetition = 100 )
+    @Repeating(repetition = 100)
     public void applyOnTest() {
         testCount++;
         M a = randomSample();
