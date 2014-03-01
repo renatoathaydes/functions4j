@@ -31,19 +31,38 @@ public class OptionalExample {
 
     }
 
-    OptionalMonoid<Integer> optionalMonoid = new OptionalMonoid<>( AddMonoid.addIntsMonoid() );
+    OptionalMonoid<Integer> addOptionalIntsMonoid = new OptionalMonoid<>( AddMonoid.addIntsMonoid() );
+
+    List<Person> people = Arrays.asList(
+            new Person( "John", 30 ),
+            new Person( "Mary", null ),
+            new Person( "Hans", 25 ),
+            new Person( "Julia", 20 ),
+            new Person( "Julia", null ),
+            new Person( "Hans", null ) );
+
+    @Test
+    public void usingJava7Style() {
+        int sumOfKnownAges = 0;
+        for ( Person p : people ) {
+            sumOfKnownAges += p.age.isPresent() ? p.age.get() : 0; // isPresent? would have been a null check in Java 7
+        }
+        assertEquals( sumOfKnownAges, 30 + 25 + 20 );
+    }
+
+    @Test
+    public void usingPlainJava8() {
+        int sumOfKnownAges = people.stream()
+                .map( ( p ) -> p.age )
+                .map( ( age ) -> age.orElse( 0 ) )
+                .reduce( ( age1, age2 ) -> age1 + age2 ).orElse( 0 );
+
+        assertEquals( sumOfKnownAges, 30 + 25 + 20 );
+    }
 
     @Test
     public void usingTheOptionalMonoid() {
-        List<Person> people = Arrays.asList(
-                new Person( "John", 30 ),
-                new Person( "Mary", null ),
-                new Person( "Hans", 25 ),
-                new Person( "Julia", 20 ),
-                new Person( "Julia", null ),
-                new Person( "Hans", null ) );
-
-        int sumOfKnownAges = optionalMonoid.applyOn(
+        int sumOfKnownAges = addOptionalIntsMonoid.applyOn(
                 people.stream().map( ( p ) -> p.age ) ).orElse( 0 );
 
         assertEquals( sumOfKnownAges, 30 + 25 + 20 );
@@ -56,7 +75,7 @@ public class OptionalExample {
                 new Person( "Julia", null ),
                 new Person( "Hans", null ) );
 
-        int sumOfKnownAges = optionalMonoid.applyOn(
+        int sumOfKnownAges = addOptionalIntsMonoid.applyOn(
                 people.stream().map( ( p ) -> p.age ) ).orElse( 0 );
 
         assertEquals( sumOfKnownAges, 0 );

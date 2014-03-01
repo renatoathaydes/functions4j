@@ -16,11 +16,13 @@ import static org.junit.Assert.assertEquals;
 public class OrderingExample {
 
     public static class Person {
+        final int id;
         final String fname;
         final String lname;
         final int age;
 
-        public Person( String fname, String lname, int age ) {
+        public Person( int id, String fname, String lname, int age ) {
+            this.id = id;
             this.fname = fname;
             this.lname = lname;
             this.age = age;
@@ -28,7 +30,7 @@ public class OrderingExample {
 
         @Override
         public String toString() {
-            return "(" + fname + "," + lname + "," + age + ")";
+            return "(" + id + "," + fname + "," + lname + "," + age + ")";
         }
 
     }
@@ -38,12 +40,12 @@ public class OrderingExample {
     @Test
     public void usingTheOrderingMonoidToSortPeopleByEachField() {
         List<Person> people = Arrays.asList(
-                new Person( "John", "Meyer", 27 ),
-                new Person( "Mary", "Jane", 25 ),
-                new Person( "Hans", "Hansson", 39 ),
-                new Person( "Julia", "Roberts", 41 ),
-                new Person( "Julia", "Roberts", 22 ),
-                new Person( "Hans", "Schneider", 19 ) );
+                new Person( 1, "John", "Meyer", 27 ),
+                new Person( 2, "Mary", "Jane", 25 ),
+                new Person( 3, "Hans", "Hansson", 39 ),
+                new Person( 4, "Julia", "Roberts", 41 ),
+                new Person( 5, "Julia", "Roberts", 22 ),
+                new Person( 6, "Hans", "Schneider", 19 ) );
 
         people.sort( ( p1, p2 ) -> orderingM.applyOn( Stream.of(
                 asOrdering( p1.fname, p2.fname ),
@@ -52,8 +54,8 @@ public class OrderingExample {
         ) ).intValue );
 
         assertEquals( people.toString(),
-                "[(Hans,Hansson,39), (Hans,Schneider,19), (John,Meyer,27), (Julia,Roberts,22)," +
-                        " (Julia,Roberts,41), (Mary,Jane,25)]" );
+                "[(3,Hans,Hansson,39), (6,Hans,Schneider,19), (1,John,Meyer,27), (5,Julia,Roberts,22)," +
+                        " (4,Julia,Roberts,41), (2,Mary,Jane,25)]" );
     }
 
 }
