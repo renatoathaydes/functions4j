@@ -1,7 +1,4 @@
-package com.athaydes.functions4j.string;
-
-import com.athaydes.functions4j.Monoid;
-import com.athaydes.functions4j.MonoidTest;
+package com.athaydes.functions4j.monoid;
 
 import java.util.UUID;
 

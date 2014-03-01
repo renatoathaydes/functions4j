@@ -1,6 +1,6 @@
-package com.athaydes.functions4j.string;
+package com.athaydes.functions4j.monoid;
 
-import com.athaydes.functions4j.Monoid;
+import com.athaydes.functions4j.monoid.Monoid;
 
 /**
  * @author Renato

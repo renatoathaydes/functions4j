@@ -1,8 +1,4 @@
-package com.athaydes.functions4j.collection;
-
-import com.athaydes.functions4j.Monoid;
-import com.athaydes.functions4j.MonoidTest;
-import com.athaydes.functions4j.string.StringMonoidTest;
+package com.athaydes.functions4j.monoid;
 
 import java.util.Collection;
 import java.util.Random;

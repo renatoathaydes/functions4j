@@ -1,5 +1,6 @@
-package com.athaydes.functions4j;
+package com.athaydes.functions4j.monoid;
 
+import com.athaydes.functions4j.monoid.Monoid;
 import com.google.code.tempusfugit.concurrency.RepeatingRule;
 import com.google.code.tempusfugit.concurrency.annotations.Repeating;
 import org.junit.AfterClass;

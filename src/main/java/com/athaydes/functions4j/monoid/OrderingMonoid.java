@@ -1,6 +1,7 @@
-package com.athaydes.functions4j.compare;
+package com.athaydes.functions4j.monoid;
 
-import com.athaydes.functions4j.Monoid;
+import com.athaydes.functions4j.compare.Ordering;
+import com.athaydes.functions4j.monoid.Monoid;
 
 import static com.athaydes.functions4j.compare.Ordering.*;
 

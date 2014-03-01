@@ -1,4 +1,4 @@
-package com.athaydes.functions4j;
+package com.athaydes.functions4j.monoid;
 
 import java.util.stream.Stream;
 

@@ -1,14 +1,11 @@
-package com.athaydes.functions4j.bool;
-
-import com.athaydes.functions4j.Monoid;
-import com.athaydes.functions4j.MonoidTest;
+package com.athaydes.functions4j.monoid;
 
 import java.util.Random;
 
 /**
  * @author Renato
  */
-public class AllMonoidTest extends MonoidTest<Boolean> {
+public class AnyMonoidTest extends MonoidTest<Boolean> {
 
     Random rand = new Random();
 

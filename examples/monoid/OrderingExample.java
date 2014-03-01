@@ -1,6 +1,6 @@
 package monoid;
 
-import com.athaydes.functions4j.compare.OrderingMonoid;
+import com.athaydes.functions4j.monoid.OrderingMonoid;
 import org.junit.Test;
 
 import java.util.Arrays;
