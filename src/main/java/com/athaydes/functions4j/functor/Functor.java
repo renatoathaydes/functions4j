@@ -3,8 +3,10 @@ package com.athaydes.functions4j.functor;
 import java.util.function.Function;
 
 /**
- * A Functor can transform an instance of a type whose parameter is T, into an instance of the
- * same type but whose parameter is R.
+ * A Functor can transform an instance of a type T whose parameter is T_, into an instance of the
+ * same type but whose parameter is R_ (even though T and R must be the same parametrized type,
+ * only with the type parameters possibly different, in Java it is not possible to declare types
+ * with different parameters as having the same "root" type).
  * <p>
  * For example:
  * <p>
