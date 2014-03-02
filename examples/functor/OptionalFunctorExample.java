@@ -28,9 +28,7 @@ public class OptionalFunctorExample {
                 .map( ( optional ) -> functor.fmap( Integer::parseInt, optional ) )
                 .collect( Collectors.toList() );
 
-        assertEquals( intOptionals, asList(
-                Optional.of( 200 ), Optional.of( 250 ), Optional.<Integer>empty(), Optional.of( 100 )
-        ) );
+        assertResult( intOptionals );
     }
 
     @Test
@@ -42,6 +40,21 @@ public class OptionalFunctorExample {
                 .map( partiallyAppliedFunctor )
                 .collect( Collectors.toList() );
 
+        assertResult( intOptionals );
+    }
+
+    @Test
+    public void usingOnlyJava8() {
+        Collection<Optional<Integer>> intOptionals = optionals.stream()
+                .map( ( opt ) -> opt.isPresent() ?
+                        Optional.of( Integer.parseInt( opt.get() ) ) :
+                        Optional.<Integer>empty() )
+                .collect( Collectors.toList() );
+
+        assertResult( intOptionals );
+    }
+
+    private void assertResult( Collection<Optional<Integer>> intOptionals ) {
         assertEquals( intOptionals, asList(
                 Optional.of( 200 ), Optional.of( 250 ), Optional.<Integer>empty(), Optional.of( 100 )
         ) );
