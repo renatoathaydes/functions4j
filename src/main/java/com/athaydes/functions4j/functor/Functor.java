@@ -3,8 +3,8 @@ package com.athaydes.functions4j.functor;
 import java.util.function.Function;
 
 /**
- * A Functor can transform an instance of a type whose parameter is T, into an instance of a
- * type whose parameter is R.
+ * A Functor can transform an instance of a type whose parameter is T, into an instance of the
+ * same type but whose parameter is R.
  * <p>
  * For example:
  * <p>
@@ -21,7 +21,8 @@ import java.util.function.Function;
 public interface Functor<T, T_, R, R_> {
 
     /**
-     * Maps the given item, using the function f, into something with a possibly different type
+     * Maps the given item of parameterized type T, using the function f, into
+     * an instance of T with a possibly different type parameter.
      *
      * @param f    function
      * @param item to be mapped over
